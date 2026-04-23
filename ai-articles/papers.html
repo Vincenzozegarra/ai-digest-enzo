@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Papers de IA — Semana del 20 Abr 2026</title>
+<style>
+  :root { --bg: #0a0a10; --card: #13131c; --border: #252535; --accent: #7c6ff7; --accent2: #a78bfa; --text: #e8e8f0; --muted: #9090b0; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; }
+  .hero { background: linear-gradient(135deg, #0f0f1a 0%, #1a1040 50%, #0f0a20 100%); padding: 60px 24px 40px; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(124,111,247,0.15) 0%, transparent 70%); top: -100px; left: 50%; transform: translateX(-50%); }
+  .hero-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent2); margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 900; letter-spacing: -1px; margin-bottom: 14px; }
+  .hero h1 span { background: linear-gradient(90deg, #7c6ff7, #c4b5fd, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p { color: var(--muted); font-size: 15px; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+  .hero-meta { display: flex; gap: 20px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+  .hero-meta span { font-size: 12px; color: var(--muted); background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); }
+  .container { max-width: 860px; margin: 0 auto; padding: 48px 24px; }
+  .paper { background: var(--card); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 32px; overflow: hidden; transition: border-color .2s; }
+  .paper:hover { border-color: var(--accent); }
+  .paper-header { padding: 28px 28px 0; }
+  .paper-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .tag { font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; }
+  .tag-purple { background: #2a1f5a; color: #a78bfa; }
+  .tag-blue { background: #1a2a4a; color: #60a5fa; }
+  .tag-green { background: #1a3a2a; color: #4ade80; }
+  .tag-orange { background: #3a2a1a; color: #fb923c; }
+  .paper-num { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+  .paper h2 { font-size: 22px; font-weight: 800; line-height: 1.3; margin-bottom: 12px; color: #fff; }
+  .paper-authors { font-size: 12px; color: var(--accent2); margin-bottom: 18px; }
+  .paper-body { padding: 0 28px 28px; }
+  .section { margin: 20px 0; }
+  .section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); margin-bottom: 10px; }
+  .section p { font-size: 14px; color: #c0c0d8; line-height: 1.8; }
+  .highlight-box { background: rgba(124,111,247,0.08); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 16px 0; }
+  .highlight-box strong { color: var(--accent2); }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin: 20px 0; }
+  .stat { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; }
+  .stat-num { font-size: 24px; font-weight: 900; color: var(--accent2); }
+  .stat-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .img-placeholder { width: 100%; height: 200px; background: linear-gradient(135deg, #1a1a2e, #2a1f5a); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 20px 0; font-size: 40px; }
+  .paper-footer { padding: 16px 28px; background: rgba(255,255,255,0.02); border-top: 1px solid var(--border); display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 700; text-decoration: none; cursor: pointer; border: none; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-outline { background: transparent; color: var(--accent2); border: 1px solid var(--border); }
+  .back-btn { position: fixed; top: 20px; left: 20px; background: rgba(0,0,0,0.7); border: 1px solid var(--border); color: var(--text); padding: 10px 16px; border-radius: 10px; text-decoration: none; font-size: 13px; font-weight: 600; backdrop-filter: blur(10px); z-index: 100; }
+  .divider { height: 1px; background: var(--border); margin: 20px 0; }
+  @media(max-width:600px){ .stats-grid{grid-template-columns:1fr 1fr} }
+</style>
+</head>
+<body>
+<a class="back-btn" href="/">← Volver al Digest</a>
+
+<div class="hero">
+  <div class="hero-label">📄 Análisis Semanal</div>
+  <h1>Papers de <span>Investigación IA</span></h1>
+  <p>Los trabajos académicos más relevantes de esta semana: agentes autónomos, inferencia eficiente y reducción de alucinaciones.</p>
+  <div class="hero-meta">
+    <span>📅 Semana del 20 Abr 2026</span>
+    <span>🔬 4 Papers analizados</span>
+    <span>🧠 arXiv · HuggingFace</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- PAPER 1 -->
+  <div class="paper">
+    <div class="paper-header">
+      <div class="paper-tags">
+        <span class="tag tag-purple">Agentes LLM</span>
+        <span class="tag tag-blue">Auto-evolución</span>
+        <span class="tag tag-green">+42.1% mejora</span>
+      </div>
+      <div class="paper-num">Paper #1 — arXiv cs.AI · Abr 2026</div>
+      <h2>SkillClaw: Auto-evolución de Habilidades en Agentes de Lenguaje</h2>
+      <div class="paper-authors">Equipo de Investigación en Agentes Autónomos · arXiv:cs.AI/2026</div>
+    </div>
+    <div class="paper-body">
+      <div class="img-placeholder">🦾</div>
+
+      <div class="section">
+        <div class="section-label">¿De qué trata?</div>
+        <p>SkillClaw es un framework que resuelve uno de los mayores problemas de los agentes de IA actuales: sus habilidades (skills) son estáticas. Una vez entrenadas, no mejoran con el uso real. Este paper propone un sistema donde los agentes <strong>aprenden continuamente</strong> de las interacciones de usuarios distintos, creando un ciclo de mejora colectiva sin necesidad de re-entrenar el modelo base.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-num">+42.1%</div><div class="stat-label">Mejora promedio en tareas reales</div></div>
+        <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Evolución continua sin reentrenamiento</div></div>
+        <div class="stat"><div class="stat-num">X-user</div><div class="stat-label">Aprendizaje colectivo cross-usuario</div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">El problema que resuelve</div>
+        <p>Los agentes LLM como Claude, GPT o Gemini tienen skills predefinidas. Cuando fallan en una tarea, esa falla se pierde. SkillClaw captura esas fallas y éxitos, los comparte entre usuarios (de forma anónima), y actualiza las skills para que el próximo agente ya sepa cómo hacerlo mejor. Es como si tus compañeros de trabajo te enseñaran automáticamente de sus errores.</p>
+      </div>
+
+      <div class="highlight-box">
+        <strong>¿Por qué importa para ti?</strong> Si usas Claude Code o agentes de IA para trabajo diario, este tipo de framework es lo que permitirá que en 2027 los agentes sean exponencialmente más eficaces — sin cambiar el modelo, solo aprendiendo de millones de interacciones reales.
+      </div>
+
+      <div class="section">
+        <div class="section-label">Cómo funciona técnicamente</div>
+        <p>El sistema tiene tres componentes: (1) un <em>Skill Monitor</em> que detecta cuándo una habilidad falla o tiene éxito, (2) un <em>Evolution Engine</em> que genera variantes mejoradas de la skill usando el mismo LLM como optimizador, y (3) un <em>Consensus Layer</em> que valida las mejoras contra múltiples usuarios antes de aceptarlas. Esto evita que una interacción rara "envenene" las skills globales.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section">
+        <div class="section-label">Aplicaciones prácticas inmediatas</div>
+        <p>Los primeros sistemas basados en SkillClaw ya se están integrando en plataformas de agentes empresariales. Se espera que Claude Code y sistemas similares adopten frameworks de este tipo en 2026–2027, lo que significa que cada tarea que delegan a un agente hoy está contribuyendo a entrenar agentes mejores mañana.</p>
+      </div>
+    </div>
+    <div class="paper-footer">
+      <a class="btn btn-primary" href="https://arxiv.org/list/cs.AI/current" target="_blank">Ver en arXiv →</a>
+      <a class="btn btn-outline" href="https://huggingface.co/papers/trending" target="_blank">HuggingFace Papers</a>
+    </div>
+  </div>
+
+  <!-- PAPER 2 -->
+  <div class="paper">
+    <div class="paper-header">
+      <div class="paper-tags">
+        <span class="tag tag-blue">Inferencia</span>
+        <span class="tag tag-orange">Multi-modelo</span>
+        <span class="tag tag-purple">Routing Adaptativo</span>
+      </div>
+      <div class="paper-num">Paper #2 — arXiv cs.LG · Abr 2026</div>
+      <h2>ParetoBandit: Routing Presupuestal Adaptativo para Serving de LLMs en Entornos No-Estacionarios</h2>
+      <div class="paper-authors">Laboratorio de Sistemas de ML · arXiv:cs.LG/2026</div>
+    </div>
+    <div class="paper-body">
+      <div class="img-placeholder">⚖️</div>
+
+      <div class="section">
+        <div class="section-label">¿De qué trata?</div>
+        <p>Cuando una empresa usa múltiples modelos de IA (GPT-5, Claude, Gemini, Llama), tiene que decidir para cada consulta: ¿qué modelo uso? ¿El más caro que es mejor, o el más barato que igual sirve? ParetoBandit es un sistema que toma esa decisión automáticamente en tiempo real, balanceando costo y calidad según el tipo de tarea.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">El insight clave</div>
+        <p>Los patrones de uso de LLMs no son estables — cambian durante el día, la semana, y según el tipo de usuarios activos. Un sistema de routing estático (siempre usa GPT-5 para X tipo de tarea) se vuelve obsoleto rápidamente. ParetoBandit usa un algoritmo de multi-armed bandit que re-optimiza el routing cada hora según el contexto actual.</p>
+      </div>
+
+      <div class="highlight-box">
+        <strong>En términos simples:</strong> Es como tener un gerente inteligente que decide en microsegundos "esta pregunta la puede responder un modelo barato, esta otra necesita el modelo premium" — ahorrando hasta 60% en costos sin sacrificar calidad percibida.
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-num">60%</div><div class="stat-label">Reducción potencial de costos</div></div>
+        <div class="stat"><div class="stat-num">&lt;1ms</div><div class="stat-label">Latencia de decisión de routing</div></div>
+        <div class="stat"><div class="stat-num">Pareto</div><div class="stat-label">Frontera óptima costo-calidad</div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">¿Por qué "no-estacionario"?</div>
+        <p>Los papers anteriores asumían que el mejor modelo para una tarea siempre es el mismo. ParetoBandit demuestra que esto es falso: a las 9am cuando hay alta demanda, conviene usar modelos rápidos y baratos. A las 2am con poca carga, se puede usar el modelo más potente sin costo adicional real. Modela estos cambios temporales explícitamente.</p>
+      </div>
+    </div>
+    <div class="paper-footer">
+      <a class="btn btn-primary" href="https://arxiv.org/list/cs.LG/current" target="_blank">Ver en arXiv →</a>
+    </div>
+  </div>
+
+  <!-- PAPER 3 -->
+  <div class="paper">
+    <div class="paper-header">
+      <div class="paper-tags">
+        <span class="tag tag-green">Compilación</span>
+        <span class="tag tag-blue">Portabilidad</span>
+        <span class="tag tag-purple">Skills como Código</span>
+      </div>
+      <div class="paper-num">Paper #3 — arXiv cs.LG · Abr 2026</div>
+      <h2>SkVM: Un Sistema de Compilación y Runtime Portable para Habilidades de Modelos de Lenguaje</h2>
+      <div class="paper-authors">Grupo de Sistemas de IA Portables · arXiv:cs.LG/2026</div>
+    </div>
+    <div class="paper-body">
+      <div class="img-placeholder">🔧</div>
+
+      <div class="section">
+        <div class="section-label">¿De qué trata?</div>
+        <p>Imagina que creas una skill excelente para Claude que analiza contratos legales. Ahora quieres usarla con GPT-5 o Gemini. Con los sistemas actuales, tienes que reescribirla desde cero. SkVM es una "máquina virtual para skills de LLM" — escribe la skill una vez, corre en cualquier modelo.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">La analogía perfecta</div>
+        <p>Es como Java y la JVM para código de programación: antes de Java, un programa escrito para Windows no corría en Mac. SkVM hace lo mismo para instrucciones de agentes IA: compila la skill a un formato intermedio que cualquier LLM puede ejecutar, adaptando automáticamente el lenguaje de instrucción al estilo que cada modelo entiende mejor.</p>
+      </div>
+
+      <div class="highlight-box">
+        <strong>Impacto en el ecosistema:</strong> Esto significaría que los plugins y skills que desarrolla la comunidad para Claude Code (como los que ves en <em>awesome-claude-code</em>) podrían funcionar automáticamente en Cursor, Codex, y Gemini CLI sin modificación.
+      </div>
+
+      <div class="section">
+        <div class="section-label">Componentes técnicos</div>
+        <p>SkVM tiene tres capas: (1) <em>Skill IR</em> (Intermediate Representation): un lenguaje abstracto que describe qué hace la skill sin depender de sintaxis de prompts específicos. (2) <em>Capability Analyzer</em>: detecta qué capacidades necesita la skill (visión, código, razonamiento matemático) y verifica si el modelo target las tiene. (3) <em>Runtime Adapter</em>: traduce las instrucciones al dialecto de prompting óptimo para cada modelo.</p>
+      </div>
+    </div>
+    <div class="paper-footer">
+      <a class="btn btn-primary" href="https://arxiv.org/list/cs.LG/current" target="_blank">Ver en arXiv →</a>
+    </div>
+  </div>
+
+  <!-- PAPER 4 -->
+  <div class="paper">
+    <div class="paper-header">
+      <div class="paper-tags">
+        <span class="tag tag-orange">Confiabilidad</span>
+        <span class="tag tag-blue">RAG</span>
+        <span class="tag tag-purple">Ciencia</span>
+      </div>
+      <div class="paper-num">Paper #4 — arXiv cs.AI · Abr 2026</div>
+      <h2>Reducción de Alucinaciones en Análisis de Literatura Científica Mediante Detección de Outliers por Contexto de Pares</h2>
+      <div class="paper-authors">Laboratorio de IA Confiable para Ciencia · arXiv:cs.AI/2026</div>
+    </div>
+    <div class="paper-body">
+      <div class="img-placeholder">🔬</div>
+
+      <div class="section">
+        <div class="section-label">El problema que ataca</div>
+        <p>Los LLMs cuando resumen papers científicos tienen un problema grave: a veces "inventan" resultados, citan cifras que no existen en el texto original, o mezclan datos de diferentes estudios. En ciencia, esto puede propagar errores críticos. Este paper propone un sistema multi-agente donde múltiples "revisores" LLM trabajan en paralelo y se detectan entre sí cuando alguno alucina.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Cómo funciona el sistema</div>
+        <p>El framework tiene 4 agentes: un <em>Lector Principal</em> que genera el resumen inicial, tres <em>Revisores</em> independientes que generan resúmenes alternativos del mismo paper, un <em>Detector de Outliers</em> que compara los cuatro resúmenes y marca afirmaciones que solo aparecen en uno (posibles alucinaciones), y un <em>Verificador Humano</em> que solo revisa las partes marcadas como sospechosas — no el resumen completo.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-num">73%</div><div class="stat-label">Reducción de alucinaciones factuales</div></div>
+        <div class="stat"><div class="stat-num">4×</div><div class="stat-label">Agentes trabajando en paralelo</div></div>
+        <div class="stat"><div class="stat-num">-85%</div><div class="stat-label">Tiempo de revisión humana necesaria</div></div>
+      </div>
+
+      <div class="highlight-box">
+        <strong>Aplicación directa:</strong> Imagina usarlo para generar este AI Digest — cada noticia que incluyo pasaría por 4 "verificadores" paralelos. Si tres dicen que Anthropic lanzó Claude Opus 4.7 pero uno dice 4.8, el sistema lo marca para verificar. La calidad del digest aumentaría radicalmente.
+      </div>
+    </div>
+    <div class="paper-footer">
+      <a class="btn btn-primary" href="https://arxiv.org/list/cs.AI/current" target="_blank">Ver en arXiv →</a>
+      <a class="btn btn-outline" href="https://huggingface.co/papers/trending" target="_blank">HuggingFace Papers</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+name = "ai-digest-enzo"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[triggers]
+crons = ["0 14 * * *"]   # 9:00am Lima (UTC-5) = 14:00 UTC
